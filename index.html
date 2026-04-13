@@ -7,7 +7,7 @@
   <meta name="description" content="Plataforma web de turismo de la Municipalidad de Pachacámac con tours, restaurantes, transportes, actividades, eventos, festividades, conciertos y hospedajes." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f7f3ee;
@@ -33,7 +33,7 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: "Inter", system-ui, sans-serif;
+      font-family: "Manrope", system-ui, sans-serif;
       color: var(--text);
       background:
         radial-gradient(circle at top left, rgba(224, 178, 61, 0.09), transparent 28%),
@@ -64,6 +64,43 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
+      position: relative;
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 52px;
+      height: 52px;
+      border: 1px solid rgba(75,46,29,0.12);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.9);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(75,46,29,0.1);
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2.5px;
+      border-radius: 999px;
+      background: var(--brand-dark);
+      transition: 0.25s ease;
+    }
+
+    .nav-toggle.is-open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.is-open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
     }
 
     .brand {
@@ -73,15 +110,22 @@
     }
 
     .brand-mark {
-      width: 58px;
-      height: 58px;
+      width: 62px;
+      height: 62px;
       border-radius: 18px;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, var(--brand-dark), var(--brand));
-      color: var(--gold-strong);
-      font-size: 28px;
+      background: rgba(255,255,255,0.92);
       box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 8px;
+      border: 1px solid rgba(75,46,29,0.08);
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .brand small {
@@ -96,7 +140,7 @@
 
     .brand strong {
       display: block;
-      font-family: "Playfair Display", serif;
+      font-family: "Sora", system-ui, sans-serif;
       font-size: 28px;
       line-height: 1;
       color: var(--red);
@@ -181,7 +225,7 @@
       overflow: hidden;
       background:
         linear-gradient(100deg, rgba(52,32,20,0.82) 0%, rgba(52,32,20,0.55) 32%, rgba(154,31,38,0.18) 60%, rgba(255,255,255,0.04) 100%),
-        url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        url('assets/img/hero-pachacamac.jpg') center/cover no-repeat;
       box-shadow: var(--shadow);
       isolation: isolate;
     }
@@ -231,7 +275,7 @@
     h1, h2, h3 { margin: 0; }
 
     .hero h1 {
-      font-family: "Playfair Display", serif;
+      font-family: "Sora", system-ui, sans-serif;
       font-size: clamp(42px, 6vw, 72px);
       line-height: 1.02;
       margin-bottom: 18px;
@@ -342,7 +386,7 @@
     }
 
     .section-copy h2 {
-      font-family: "Playfair Display", serif;
+      font-family: "Sora", system-ui, sans-serif;
       font-size: clamp(32px, 5vw, 50px);
       color: var(--brand-dark);
       margin-bottom: 10px;
@@ -421,7 +465,7 @@
     }
 
     .card-title {
-      font-family: "Playfair Display", serif;
+      font-family: "Sora", system-ui, sans-serif;
       font-size: 30px;
       line-height: 1.15;
       color: var(--brand-dark);
@@ -496,7 +540,7 @@
 
     .service-card h3 {
       font-size: 24px;
-      font-family: "Playfair Display", serif;
+      font-family: "Sora", system-ui, sans-serif;
       color: var(--brand-dark);
       margin-bottom: 10px;
     }
@@ -528,7 +572,7 @@
     }
 
     .experience-panel h3 {
-      font-family: "Playfair Display", serif;
+      font-family: "Sora", system-ui, sans-serif;
       font-size: 38px;
       margin-bottom: 14px;
     }
@@ -582,7 +626,7 @@
     }
 
     .info-card h3 {
-      font-family: "Playfair Display", serif;
+      font-family: "Sora", system-ui, sans-serif;
       font-size: 30px;
       color: var(--brand-dark);
       margin-bottom: 12px;
@@ -613,7 +657,7 @@
     .footer h4 {
       margin: 0 0 14px;
       font-size: 22px;
-      font-family: "Playfair Display", serif;
+      font-family: "Sora", system-ui, sans-serif;
     }
 
     .footer p,
@@ -687,35 +731,102 @@
 
     @media (max-width: 900px) {
       .nav {
-        padding: 16px 0;
+        padding: 14px 0;
+        min-height: auto;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+      }
+      .nav-toggle {
+        display: inline-flex;
+      }
+      .menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
         flex-direction: column;
         align-items: flex-start;
+        gap: 2px;
+        padding: 12px;
+        background: rgba(255, 251, 247, 0.98);
+        border: 1px solid rgba(75,46,29,0.08);
+        border-radius: 20px;
+        box-shadow: 0 18px 40px rgba(48,31,19,0.14);
       }
-      .menu { justify-content: flex-start; gap: 16px; }
-      .hero-content { padding: 56px 26px 260px; }
-      .hero-shell { min-height: 760px; }
+      .menu.is-open {
+        display: flex;
+      }
+      .menu a {
+        width: 100%;
+        padding: 14px 12px;
+        border-radius: 12px;
+      }
+      .menu a:hover {
+        background: rgba(224,178,61,0.12);
+      }
+      .nav-actions {
+        grid-column: 1 / -1;
+        width: 100%;
+        margin-top: 12px;
+      }
+      .nav-actions .btn {
+        width: 100%;
+      }
+      .hero-content {
+        padding: 48px 22px 268px;
+      }
+      .hero-shell {
+        min-height: 780px;
+      }
       .section-head { flex-direction: column; align-items: flex-start; }
       .info-grid { grid-template-columns: 1fr; }
       .stats { grid-template-columns: 1fr; }
+      .search-bar {
+        width: calc(100% - 18px);
+        bottom: 12px;
+      }
+      .search-grid {
+        grid-template-columns: 1fr;
+      }
+      .field {
+        min-height: 62px;
+      }
+      .search-btn {
+        width: 100%;
+        min-width: 100%;
+      }
     }
 
     @media (max-width: 640px) {
-      .container { width: min(calc(100% - 22px), var(--max)); }
+      .container { width: min(calc(100% - 18px), var(--max)); }
       .cards-grid,
       .services-grid,
       .footer-grid,
       .search-grid { grid-template-columns: 1fr; }
-      .hero-shell { min-height: 820px; border-radius: 26px; }
-      .hero-content { padding: 42px 18px 340px; }
-      .hero h1 { font-size: 40px; }
-      .card-title { font-size: 26px; }
+      .hero-shell { min-height: 860px; border-radius: 24px; }
+      .hero-content { padding: 34px 16px 360px; }
+      .hero h1 { font-size: 34px; }
+      .hero p { font-size: 16px; line-height: 1.65; }
+      .card-title { font-size: 24px; }
+      .brand strong { font-size: 22px; }
+      .brand-mark { width: 54px; height: 54px; padding: 7px; }
       .search-bar {
-        width: calc(100% - 16px);
-        bottom: 10px;
-        padding: 12px;
+        width: calc(100% - 12px);
+        bottom: 8px;
+        padding: 10px;
+        border-radius: 18px;
       }
-      .nav-actions { width: 100%; }
-      .nav-actions .btn { width: 100%; }
+      .field {
+        padding: 0 14px;
+        border-radius: 14px;
+      }
+      .hero-actions .btn,
+      .btn,
+      .search-btn {
+        min-height: 56px;
+      }
     }
   </style>
 </head>
@@ -723,14 +834,20 @@
   <header class="topbar">
     <div class="container nav">
       <a href="#inicio" class="brand">
-        <div class="brand-mark">⛰</div>
+        <div class="brand-mark"><img src="assets/img/logopachaexplorer.png" alt="Logo Pachacamac Explorer"></div>
         <div>
           <small>Municipalidad de Pachacámac</small>
           <strong>Pachacamac <span>Explorer</span></strong>
         </div>
       </a>
 
-      <nav class="menu">
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="menu" id="mainMenu">
         <a class="active" href="#inicio">Inicio</a>
         <a href="#tours">Tours</a>
         <a href="#servicios">Servicios</a>
@@ -848,7 +965,7 @@
         <div class="cards-grid">
           <article class="tour-card">
             <div class="card-image">
-              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Santuario de Pachacámac" />
+              <img src="assets/img/tour-santuario.jpg" alt="Santuario de Pachacámac" />
             </div>
             <div class="card-body">
               <span class="badge">Tour estrella</span>
@@ -866,7 +983,7 @@
 
           <article class="tour-card">
             <div class="card-image">
-              <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?auto=format&fit=crop&w=1200&q=80" alt="Cabalgata por el valle" />
+              <img src="assets/img/tour-cabalgata.jpg" alt="Cabalgata por el valle" />
             </div>
             <div class="card-body">
               <span class="badge">Naturaleza</span>
@@ -884,7 +1001,7 @@
 
           <article class="tour-card">
             <div class="card-image">
-              <img src="https://images.unsplash.com/photo-1517821365201-7734f463f9db?auto=format&fit=crop&w=1200&q=80" alt="Aventura en cuatrimotos" />
+              <img src="assets/img/tour-cuatrimotos.jpg" alt="Aventura en cuatrimotos" />
             </div>
             <div class="card-body">
               <span class="badge">Aventura</span>
@@ -902,7 +1019,7 @@
 
           <article class="tour-card">
             <div class="card-image">
-              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" alt="Gastronomía local" />
+              <img src="assets/img/tour-gastronomia.jpg" alt="Gastronomía local" />
             </div>
             <div class="card-body">
               <span class="badge">Gastronomía</span>
@@ -1021,7 +1138,7 @@
           </div>
 
           <div class="experience-image">
-            <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80" alt="Turistas explorando Pachacámac" />
+            <img src="assets/img/experiencia-pachacamac.jpg" alt="Turistas explorando Pachacámac" />
           </div>
         </div>
       </div>
@@ -1068,7 +1185,7 @@
       <div class="footer-grid">
         <div>
           <div class="brand" style="margin-bottom: 14px;">
-            <div class="brand-mark">⛰</div>
+            <div class="brand-mark"><img src="assets/img/logopachaexplorer.png" alt="Logo Pachacamac Explorer"></div>
             <div>
               <small style="color: rgba(248,239,228,0.68);">Municipalidad de Pachacámac</small>
               <strong style="color: #fff8ef; font-size: 24px;">Pachacamac <span style="color: var(--gold-strong);">Explorer</span></strong>
@@ -1121,6 +1238,25 @@
   </footer>
 
   <script>
+    const navToggle = document.getElementById('navToggle');
+    const mainMenu = document.getElementById('mainMenu');
+
+    if (navToggle && mainMenu) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = mainMenu.classList.toggle('is-open');
+        navToggle.classList.toggle('is-open', isOpen);
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      mainMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mainMenu.classList.remove('is-open');
+          navToggle.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
     function handleSearch(event) {
       event.preventDefault();
       const fecha = document.getElementById('fecha').value;
