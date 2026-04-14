@@ -21,6 +21,12 @@
             <img src="assets/icons/youtube.svg" alt="YouTube">
           </a>
         </div>
+
+        <div class="footer-business-cta">
+          <button class="btn btn-primary" type="button" onclick="openBusinessModal()">
+            Publica tu negocio
+          </button>
+        </div>
       </div>
 
       <div>
@@ -59,3 +65,125 @@
     </div>
   </div>
 </footer>
+
+<div class="business-modal-overlay" id="businessModal">
+  <div class="business-modal-box" role="dialog" aria-modal="true" aria-labelledby="businessModalTitle">
+    <button class="business-modal-close" type="button" aria-label="Cerrar" onclick="closeBusinessModal()">×</button>
+
+    <div class="business-modal-content">
+      <span class="business-modal-badge">Inscripción de negocios</span>
+      <h2 id="businessModalTitle">¿Tienes un negocio turístico en Pachacámac?</h2>
+      <p class="business-modal-text">
+        Si tu negocio contribuye al desarrollo sostenible del turismo local en nuestro distrito,
+        inscribe tu negocio para que aparezca en nuestro portal turístico.
+      </p>
+
+      <form class="business-form" onsubmit="submitBusinessForm(event)">
+        <div class="business-form-grid">
+          <div class="business-field">
+            <label for="businessName">Nombre del negocio</label>
+            <input id="businessName" name="businessName" type="text" placeholder="Ej. Restaurante Valle Verde" required>
+          </div>
+
+          <div class="business-field">
+            <label for="businessCategory">Categoría</label>
+            <select id="businessCategory" name="businessCategory" required>
+              <option value="">Selecciona una categoría</option>
+              <option value="Restaurante">Restaurante</option>
+              <option value="Hospedaje">Hospedaje</option>
+              <option value="Tour operador">Tour operador</option>
+              <option value="Transporte turístico">Transporte turístico</option>
+              <option value="Artesanía">Artesanía</option>
+              <option value="Experiencia turística">Experiencia turística</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="business-field">
+            <label for="businessOwner">Nombre del responsable</label>
+            <input id="businessOwner" name="businessOwner" type="text" placeholder="Nombre completo" required>
+          </div>
+
+          <div class="business-field">
+            <label for="businessPhone">WhatsApp / Teléfono</label>
+            <input id="businessPhone" name="businessPhone" type="tel" placeholder="+51 999 999 999" required>
+          </div>
+
+          <div class="business-field">
+            <label for="businessEmail">Correo electrónico</label>
+            <input id="businessEmail" name="businessEmail" type="email" placeholder="correo@negocio.com" required>
+          </div>
+
+          <div class="business-field">
+            <label for="businessWebsite">Página web o red social</label>
+            <input id="businessWebsite" name="businessWebsite" type="url" placeholder="https://">
+          </div>
+
+          <div class="business-field business-field-full">
+            <label for="businessAddress">Dirección</label>
+            <input id="businessAddress" name="businessAddress" type="text" placeholder="Dirección del negocio en Pachacámac" required>
+          </div>
+
+          <div class="business-field business-field-full">
+            <label for="businessDescription">Cuéntanos sobre tu negocio</label>
+            <textarea id="businessDescription" name="businessDescription" rows="5" placeholder="Describe tus servicios, propuesta turística y cómo aportas al turismo local." required></textarea>
+          </div>
+        </div>
+
+        <div class="business-form-actions">
+          <button class="btn btn-secondary" type="button" onclick="closeBusinessModal()">Cancelar</button>
+          <button class="btn btn-primary" type="submit">Enviar inscripción</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openBusinessModal() {
+    const modal = document.getElementById('businessModal');
+    if (!modal) return;
+    modal.classList.add('is-active');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeBusinessModal() {
+    const modal = document.getElementById('businessModal');
+    if (!modal) return;
+    modal.classList.remove('is-active');
+    document.body.classList.remove('modal-open');
+  }
+
+  function submitBusinessForm(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const businessName = form.businessName.value;
+    const businessCategory = form.businessCategory.value;
+    const businessOwner = form.businessOwner.value;
+
+    alert(
+      'Gracias por inscribir tu negocio.\n\n' +
+      'Negocio: ' + businessName + '\n' +
+      'Categoría: ' + businessCategory + '\n' +
+      'Responsable: ' + businessOwner + '\n\n' +
+      'Tu solicitud fue registrada correctamente.'
+    );
+
+    form.reset();
+    closeBusinessModal();
+  }
+
+  document.addEventListener('click', function(event) {
+    const modal = document.getElementById('businessModal');
+    if (event.target === modal) {
+      closeBusinessModal();
+    }
+  });
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      closeBusinessModal();
+    }
+  });
+</script>
