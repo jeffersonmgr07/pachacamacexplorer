@@ -11,32 +11,7 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="container nav">
-      <a href="#inicio" class="brand brand-logo-only">
-        <img src="assets/img/logopachaturistico.png" alt="Logo Pachacamac Explorer" class="brand-logo">
-      </a>
-
-      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="menu" id="mainMenu">
-        <a class="active" href="#inicio">Inicio</a>
-        <a href="#tours">Tours</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#experiencias">Experiencias</a>
-        <a href="#agenda">Agenda</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-
-      <div class="nav-actions">
-        <a class="btn btn-primary" href="#tours">Reserva Ahora</a>
-      </div>
-    </div>
-  </header>
+  <div id="header-placeholder"></div>
 
   <main>
     <section class="hero" id="inicio">
@@ -236,7 +211,7 @@
 
         <div class="services-grid">
           <article class="service-card">
-            <div class="service-icon">🗿</div>
+            <div class="service-icon">🧿</div>
             <h3>Tours</h3>
             <p>Paquetes guiados, rutas culturales, naturaleza, aventura y experiencias familiares con reserva directa.</p>
             <a class="service-link" href="#tours">Explorar tours →</a>
@@ -250,7 +225,7 @@
           </article>
 
           <article class="service-card">
-            <div class="service-icon">🚐</div>
+            <div class="service-icon">🚌</div>
             <h3>Transportes</h3>
             <p>Movilidad turística, traslados privados, rutas desde Lima y opciones locales para grupos o parejas.</p>
             <a class="service-link" href="#contacto">Consultar transporte →</a>
@@ -271,7 +246,7 @@
           </article>
 
           <article class="service-card">
-            <div class="service-icon">🎭</div>
+            <div class="service-icon">📅</div>
             <h3>Festividades</h3>
             <p>Calendario anual con celebraciones tradicionales, actividades municipales y experiencias culturales únicas.</p>
             <a class="service-link" href="#agenda">Revisar festividades →</a>
@@ -363,77 +338,34 @@
     </section>
   </main>
 
-  <footer class="footer" id="contacto">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="brand footer-brand">
-            <img src="assets/img/logopachaexplorer.png" alt="Logo Pachacamac Explorer" class="brand-logo">
-          </div>
-          <p>Plataforma web turística para promocionar, reservar y conectar visitantes con la oferta cultural, gastronómica y natural del distrito.</p>
-          <div class="socials">
-            <a class="social" href="#">f</a>
-            <a class="social" href="#">ig</a>
-            <a class="social" href="#">x</a>
-            <a class="social" href="#">yt</a>
-          </div>
-        </div>
-
-        <div>
-          <h4>Secciones</h4>
-          <ul>
-            <li><a href="#tours">Tours y reservas</a></li>
-            <li><a href="#servicios">Directorio de servicios</a></li>
-            <li><a href="#experiencias">Experiencias</a></li>
-            <li><a href="#agenda">Eventos y festividades</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Información</h4>
-          <ul>
-            <li><a href="#">Nosotros</a></li>
-            <li><a href="#">Política de privacidad</a></li>
-            <li><a href="#">Términos y condiciones</a></li>
-            <li><a href="#">Guía turística</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Mantente informado</h4>
-          <p>Recibe promociones, agenda cultural y nuevas experiencias turísticas de Pachacámac.</p>
-          <form class="newsletter" onsubmit="event.preventDefault(); alert('Gracias por suscribirte a Pachacamac Explorer');">
-            <input type="email" placeholder="Ingresa tu correo" required>
-            <button class="btn btn-primary" type="submit">Suscribirse</button>
-          </form>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© 2026 Pachacamac Explorer · Propuesta para plataforma turística municipal.</span>
-        <span>Diseño inspirado en patrimonio, aventura y experiencia premium.</span>
-      </div>
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
 
   <script>
-    const navToggle = document.getElementById('navToggle');
-    const mainMenu = document.getElementById('mainMenu');
+    async function loadComponent(id, file) {
+      const response = await fetch(file);
+      const html = await response.text();
+      document.getElementById(id).innerHTML = html;
+    }
 
-    if (navToggle && mainMenu) {
-      navToggle.addEventListener('click', () => {
-        const isOpen = mainMenu.classList.toggle('is-open');
-        navToggle.classList.toggle('is-open', isOpen);
-        navToggle.setAttribute('aria-expanded', String(isOpen));
-      });
+    function initHeaderMenu() {
+      const navToggle = document.getElementById('navToggle');
+      const mainMenu = document.getElementById('mainMenu');
 
-      mainMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mainMenu.classList.remove('is-open');
-          navToggle.classList.remove('is-open');
-          navToggle.setAttribute('aria-expanded', 'false');
+      if (navToggle && mainMenu) {
+        navToggle.addEventListener('click', () => {
+          const isOpen = mainMenu.classList.toggle('is-open');
+          navToggle.classList.toggle('is-open', isOpen);
+          navToggle.setAttribute('aria-expanded', String(isOpen));
         });
-      });
+
+        mainMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mainMenu.classList.remove('is-open');
+            navToggle.classList.remove('is-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
     }
 
     function handleSearch(event) {
@@ -446,6 +378,15 @@
       const resumen = `Búsqueda realizada:\n\nFecha: ${fecha || 'No definida'}\nActividad: ${actividad || 'No definida'}\nCategoría: ${categoria}\nTuristas: ${personas}`;
       alert(resumen);
     }
+
+    Promise.all([
+      loadComponent('header-placeholder', 'components/header.html'),
+      loadComponent('footer-placeholder', 'components/footer.html')
+    ]).then(() => {
+      initHeaderMenu();
+    }).catch(error => {
+      console.error('Error cargando componentes:', error);
+    });
   </script>
 </body>
 </html>
