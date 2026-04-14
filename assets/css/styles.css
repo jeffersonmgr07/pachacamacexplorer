@@ -1112,3 +1112,149 @@ section {
     grid-template-columns: 1fr;
   }
 }
+.footer-business-cta {
+  margin-top: 1.2rem;
+}
+
+.business-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.58);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: 0.25s ease;
+  z-index: 10000;
+}
+
+.business-modal-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.business-modal-box {
+  width: min(820px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 24px;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+}
+
+.business-modal-content {
+  padding: 2rem;
+}
+
+.business-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(150, 25, 29, 0.08);
+  color: #96191d;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.business-modal-badge {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(150, 25, 29, 0.1);
+  color: #96191d;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.business-modal-content h2 {
+  margin: 0 0 0.8rem;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  line-height: 1.15;
+}
+
+.business-modal-text {
+  margin: 0 0 1.5rem;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.78);
+}
+
+.business-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.business-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.business-field-full {
+  grid-column: 1 / -1;
+}
+
+.business-field label {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.business-field input,
+.business-field select,
+.business-field textarea {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  padding: 0.95rem 1rem;
+  font: inherit;
+  background: #fff;
+  outline: none;
+}
+
+.business-field input:focus,
+.business-field select:focus,
+.business-field textarea:focus {
+  border-color: #96191d;
+  box-shadow: 0 0 0 3px rgba(150, 25, 29, 0.08);
+}
+
+.business-field textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.business-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
+@media (max-width: 768px) {
+  .business-modal-content {
+    padding: 1.4rem;
+  }
+
+  .business-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .business-form-actions {
+    flex-direction: column;
+  }
+
+  .business-form-actions .btn {
+    width: 100%;
+  }
+}
