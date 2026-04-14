@@ -423,24 +423,77 @@
       document.body.classList.remove('modal-open');
     }
 
-    document.addEventListener('click', function(event) {
-      const modal = document.getElementById('restaurantModal');
-      if (event.target === modal) {
-        closeRestaurantModal();
-      }
-    });
+    function initRestaurantModal() {
+      document.addEventListener('click', function(event) {
+        const modal = document.getElementById('restaurantModal');
+        if (event.target === modal) {
+          closeRestaurantModal();
+        }
+      });
 
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closeRestaurantModal();
-      }
-    });
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeRestaurantModal();
+        }
+      });
+    }
+
+    function openBusinessModal() {
+      const modal = document.getElementById('businessModal');
+      if (!modal) return;
+      modal.classList.add('is-active');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeBusinessModal() {
+      const modal = document.getElementById('businessModal');
+      if (!modal) return;
+      modal.classList.remove('is-active');
+      document.body.classList.remove('modal-open');
+    }
+
+    function submitBusinessForm(event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const businessName = form.businessName.value;
+      const businessCategory = form.businessCategory.value;
+      const businessOwner = form.businessOwner.value;
+
+      alert(
+        'Gracias por inscribir tu negocio.\n\n' +
+        'Negocio: ' + businessName + '\n' +
+        'Categoría: ' + businessCategory + '\n' +
+        'Responsable: ' + businessOwner + '\n\n' +
+        'Tu solicitud fue registrada correctamente.'
+      );
+
+      form.reset();
+      closeBusinessModal();
+    }
+
+    function initBusinessModal() {
+      document.addEventListener('click', function(event) {
+        const modal = document.getElementById('businessModal');
+        if (event.target === modal) {
+          closeBusinessModal();
+        }
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeBusinessModal();
+        }
+      });
+    }
 
     Promise.all([
       loadComponent('header-placeholder', 'components/header.html'),
       loadComponent('footer-placeholder', 'components/footer.html')
     ]).then(() => {
       initHeaderMenu();
+      initRestaurantModal();
+      initBusinessModal();
     }).catch(error => {
       console.error('Error cargando componentes:', error);
     });
