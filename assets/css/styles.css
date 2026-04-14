@@ -120,7 +120,7 @@ select {
 }
 
 .brand-logo {
-  height: 400px;
+  height: 200px;
   width: auto;
   display: block;
   object-fit: contain;
