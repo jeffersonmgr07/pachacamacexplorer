@@ -120,7 +120,7 @@ select {
 }
 
 .brand-logo {
-  height: 100px;
+  height: 50px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -877,7 +877,7 @@ section {
   }
 
   .brand-logo {
-    height: 60px;
+    height: 90px;
   }
 
   .search-bar {
